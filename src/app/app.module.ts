@@ -22,6 +22,8 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 
+import { AuthService } from './auth.service';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { environment } from '../environments/environment';
       { path : 'admin/orders', component: AdminOrdersComponent},
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
