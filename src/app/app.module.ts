@@ -1,7 +1,7 @@
 // ANGULAR
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 // BOOTSTRAP
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -31,8 +31,20 @@ import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
 
 // ROUTING
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 
+// ROUTES
+const routes: Routes = [
+  { path : '', component: HomeComponent},
+  { path : 'products', component: ProductsComponent},
+  { path : 'shopping-cart', component: ShoppingCartComponent},
+  { path : 'check-out', component: CheckOutComponent},
+  { path : 'order-success', component: OrderSuccessComponent},
+  { path : 'login', component: LoginComponent},
+  { path : 'my/orders', component: MyOrdersComponent},
+  { path : 'admin/products', component: AdminProductsComponent},
+  { path : 'admin/orders', component: AdminOrdersComponent}
+];
 
 @NgModule({
   declarations: [
@@ -46,11 +58,11 @@ import { AppRoutingModule } from './app-routing.module';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent,
-    AppRoutingModule
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
