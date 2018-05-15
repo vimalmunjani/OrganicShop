@@ -29,6 +29,7 @@ import { environment } from '../environments/environment';
 
 // SERVICES
 import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
 
 // ROUTING
 // import { AppRoutingModule } from './app-routing.module';
@@ -37,13 +38,15 @@ import { AuthService } from './auth.service';
 const routes: Routes = [
   { path : '', component: HomeComponent},
   { path : 'products', component: ProductsComponent},
-  { path : 'shopping-cart', component: ShoppingCartComponent},
-  { path : 'check-out', component: CheckOutComponent},
-  { path : 'order-success', component: OrderSuccessComponent},
   { path : 'login', component: LoginComponent},
-  { path : 'my/orders', component: MyOrdersComponent},
-  { path : 'admin/products', component: AdminProductsComponent},
-  { path : 'admin/orders', component: AdminOrdersComponent}
+  { path : 'shopping-cart', component: ShoppingCartComponent},
+
+  { path : 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
+  { path : 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
+
+  { path : 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
+  { path : 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
+  { path : 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
@@ -69,7 +72,8 @@ const routes: Routes = [
     NgbModule.forRoot()
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
