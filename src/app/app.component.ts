@@ -19,6 +19,8 @@ export class AppComponent {
       if (user) {
         const returnUrl = localStorage.getItem('returnUrl');
         this.router.navigateByUrl(returnUrl);
+      } else {
+        this.router.navigateByUrl('/');
       }
     });
 
