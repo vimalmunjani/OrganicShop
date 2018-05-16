@@ -32,6 +32,8 @@ import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './category.service';
 
 
 // ROUTING
@@ -47,6 +49,11 @@ const routes: Routes = [
   {
     path : 'admin/products',
     component: AdminProductsComponent,
+    canActivate: [AuthGuardService, AdminAuthGuardService]
+  },
+  {
+    path : 'admin/products/new',
+    component: ProductFormComponent,
     canActivate: [AuthGuardService, AdminAuthGuardService]
   },
   {
@@ -72,7 +79,8 @@ const routes: Routes = [
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +94,8 @@ const routes: Routes = [
     AuthService,
     AuthGuardService,
     AdminAuthGuardService,
-    UserService
+    UserService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
