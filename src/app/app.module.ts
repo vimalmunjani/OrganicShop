@@ -31,6 +31,9 @@ import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
+
+
 // ROUTING
 // import { AppRoutingModule } from './app-routing.module';
 
@@ -41,8 +44,16 @@ const routes: Routes = [
   { path : 'login', component: LoginComponent},
   { path : 'shopping-cart', component: ShoppingCartComponent},
 
-  { path : 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
-  { path : 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
+  {
+    path : 'admin/products',
+    component: AdminProductsComponent,
+    canActivate: [AuthGuardService, AdminAuthGuardService]
+  },
+  {
+    path : 'admin/orders',
+    component: AdminOrdersComponent,
+    canActivate: [AuthGuardService, AdminAuthGuardService]
+  },
 
   { path : 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
   { path : 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
@@ -74,6 +85,7 @@ const routes: Routes = [
   providers: [
     AuthService,
     AuthGuardService,
+    AdminAuthGuardService,
     UserService
   ],
   bootstrap: [AppComponent]

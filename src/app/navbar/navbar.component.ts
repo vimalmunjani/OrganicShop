@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { AuthService } from '../auth.service';
+import { AppUser } from '../models/app-user';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,13 @@ import { AuthService } from '../auth.service';
 })
 export class NavbarComponent {
 
-  constructor(public auth: AuthService) { }
+  appUser: AppUser;
+
+  constructor(private auth: AuthService) {
+    this.auth.appUser$.subscribe(user => {
+      this.appUser = user;
+    });
+  }
 
    logout() {
      this.auth.logout();
