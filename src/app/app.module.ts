@@ -30,7 +30,7 @@ import { environment } from '../environments/environment';
 // SERVICES
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
-
+import { UserService } from './user.service';
 // ROUTING
 // import { AppRoutingModule } from './app-routing.module';
 
@@ -73,7 +73,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
