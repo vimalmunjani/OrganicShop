@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
-  { path : '', component: HomeComponent},
+  { path : '', component: ProductsComponent},
   { path : 'products', component: ProductsComponent},
   { path : 'login', component: LoginComponent},
   { path : 'admin/products', component: AdminProductsComponent},

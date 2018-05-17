@@ -38,6 +38,7 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 
 // ROUTING
@@ -45,7 +46,7 @@ import { ProductService } from './product.service';
 
 // ROUTES
 const routes: Routes = [
-  { path : '', component: HomeComponent},
+  { path : '', component: ProductsComponent},
   { path : 'products', component: ProductsComponent},
   { path : 'login', component: LoginComponent},
   { path : 'shopping-cart', component: ShoppingCartComponent},
@@ -89,7 +90,8 @@ const routes: Routes = [
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule,
