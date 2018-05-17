@@ -1,0 +1,27 @@
+<div class="card" *ngIf="product.title">
+  <img class="card-img-top" [src]="product.imageUrl" *ngIf="product.imageUrl; else defaultImage" alt="{{ product.title }}">
+  
+  <ng-template #defaultImage>
+      <img class="card-img-top" src="https://static1.squarespace.com/static/56b15ce786db439f9f8d5e2c/t/592300d8725e257a85a0d53f/1495466202813/t45-background-blue-solid.png?format=1500w">
+  </ng-template>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">{{ product.price | currency:"₹":0 }}</p>
+  </div>
+  <div class="card-footer">
+      <a *ngIf="showActions" href="#" class="btn btn-primary btn-block">Add to Cart</a>
+  </div>
+</div>
+
+
+<!-- 
+<div class="card" *ngIf="product.title" style="width: 450px;">
+    <img class="card-img-top" *ngIf="product.imageUrl && imageUrl.valid;else defaultImage" [src]="product.imageUrl">
+    <ng-template #defaultImage>
+        <img class="card-img-top" src="https://static1.squarespace.com/static/56b15ce786db439f9f8d5e2c/t/592300d8725e257a85a0d53f/1495466202813/t45-background-blue-solid.png?format=1500w">
+    </ng-template>
+    <div class="card-body">
+      <h3 class="card-title">{{ product.title }}</h3>
+    </div>
+  </div> -->
