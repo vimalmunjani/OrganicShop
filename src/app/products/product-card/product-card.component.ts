@@ -1,11 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { AppProduct } from '../../models/app-product';
+import { ShoppingCartService } from '../../shopping-cart.service';
+import { slide } from '../../animations';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'product-card',
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  styleUrls: ['./product-card.component.css'],
+  animations : [slide]
 })
 export class ProductCardComponent implements OnInit {
 
@@ -15,7 +19,11 @@ export class ProductCardComponent implements OnInit {
   @Input('show-actions') showActions = true;
 
 
-  constructor() { }
+  constructor(private cartService: ShoppingCartService) { }
+
+  addToCart(product: AppProduct) {
+
+  }
 
   ngOnInit() {
   }

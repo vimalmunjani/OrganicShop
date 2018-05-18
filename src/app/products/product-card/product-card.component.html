@@ -1,4 +1,4 @@
-<div class="card" *ngIf="product.title">
+<div class="card" @slide *ngIf="product.title">
   <img class="card-img-top" [src]="product.imageUrl" *ngIf="product.imageUrl; else defaultImage" alt="{{ product.title }}">
   
   <ng-template #defaultImage>
@@ -10,7 +10,9 @@
     <p class="card-text">{{ product.price | currency:"₹":0 }}</p>
   </div>
   <div class="card-footer">
-      <a *ngIf="showActions" href="#" class="btn btn-primary btn-block">Add to Cart</a>
+      <button *ngIf="showActions"
+      (click)="addToCart(product)"
+      class="btn btn-primary btn-block">Add to Cart</button>
   </div>
 </div>
 
