@@ -18,10 +18,14 @@ export class ProductsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService) {
 
-    productService.getAllProducts().subscribe(p => {
+  }
+
+  ngOnInit() {
+
+    this.productService.getAllProducts().subscribe(p => {
       this.products = p;
 
-      route.queryParamMap.subscribe(params => {
+      this.route.queryParamMap.subscribe(params => {
         this.selectedCategory = params.get('category');
 
         this.filteredProducts = (this.selectedCategory) ?
@@ -32,11 +36,6 @@ export class ProductsComponent implements OnInit {
     });
 
 
-
-
-  }
-
-  ngOnInit() {
   }
 
 }
